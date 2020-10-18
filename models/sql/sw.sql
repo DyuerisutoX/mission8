@@ -148,3 +148,89 @@ INSERT INTO QDP   VALUES
     ( "BOSS" , 5  , "Louis XIV"  ) ;
 
 
+/*
+SELECT DU.codeDuree, categoProd, prixLocation 
+	FROM duree AS DU INNER JOIN tarif AS TA
+    ON DU.codeDuree = TA.codeDuree;
+*/
+
+/*
+Requete pour afficher le libelle des duree
+
+SELECT DISTINCT libDuree AS 'Tarif Location' 
+FROM tarif as TA INNER JOIN duree as DU 
+ON TA.codeDuree = DU.codeDuree;*/
+
+/*
+Requete pour recuperer les valeurs de prix planche de surf
+
+SELECT codeDuree, prixLocation AS 'Planche de Surf'
+FROM tarif as TA INNER JOIN catprod as CAP
+    ON TA.categoProd = CAP.categoProd
+    WHERE TA.categoProd = 'PS'
+    ORDER BY prixLocation;
+
+*/
+
+/*
+Requete pour recuperer les valeurs de prix bodyboard
+
+SELECT codeDuree, prixLocation AS 'Bodyboard'
+FROM tarif as TA INNER JOIN catprod as CAP
+    ON TA.categoProd = CAP.categoProd
+    WHERE TA.categoProd = 'BB'
+    ORDER BY prixLocation;
+
+*/
+
+/*
+Requete pour recuperer les valeurs de prix combinaison
+
+SELECT codeDuree, prixLocation AS 'combinaison'
+FROM tarif as TA INNER JOIN catprod as CAP
+    ON TA.categoProd = CAP.categoProd
+    WHERE TA.categoProd = 'CO'
+    ORDER BY prixLocation;
+
+*/
+
+/*
+SELECT DISTINCT libDuree, (SELECT prixLocation AS 'Planche de Surf'
+FROM tarif as TA INNER JOIN catprod as CAP
+    ON TA.categoProd = CAP.categoProd
+    WHERE TA.categoProd = 'PS')
+    
+    FROM tarif as TA INNER JOIN duree AS DU
+    ON TA.codeDuree = DU.codeDuree;
+*/
+
+/*
+SELECT (SELECT prixLocation AS 'Planche de Surf'
+FROM tarif as TA INNER JOIN catprod as CAP
+    ON TA.categoProd = CAP.categoProd
+    WHERE TA.categoProd = 'PS'), (SELECT prixLocation AS 'Bodyboard'
+FROM tarif as TA INNER JOIN catprod as CAP
+    ON TA.categoProd = CAP.categoProd
+    WHERE TA.categoProd = 'BB')
+    FROM tarif
+    ORDER BY prixLocation;
+*/
+
+/*
+SELECT TA.codeDuree, (SELECT prixLocation AS 'Planche de Surf'
+FROM tarif as TA INNER JOIN catprod as CAP
+    ON TA.categoProd = CAP.categoProd), (SELECT prixLocation AS 'Bodyboard'
+FROM tarif as TA INNER JOIN catprod as CAP
+    ON TA.categoProd = CAP.categoProd)
+    FROM duree AS DU INNER JOIN tarif AS TA
+    on DU.codeDuree = TA.codeDuree
+    WHERE categoProd IN ('PS', 'BB')
+    ORDER BY prixLocation;
+*/
+
+/*
+SELECT libDuree, MAX(IF (TA.categoProd = 'PS', prixLocation, null)) AS 'Planche de Surf', MAX(IF (TA.categoProd = 'BB', prixLocation, null)) AS 'Bodyboard', MAX(IF (TA.categoProd = 'CO', prixLocation, null)) AS 'Combinaison'
+FROM duree AS DU INNER JOIN tarif AS TA
+ON DU.codeDuree = TA.codeDuree
+GROUP BY libDuree ORDER BY 2;
+*/
