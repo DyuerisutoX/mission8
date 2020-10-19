@@ -1,4 +1,4 @@
-<header>
+<header id="header_admin">
 
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
@@ -10,25 +10,16 @@
         <div class="collapse navbar-collapse" id="navbarsExample07">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Boutique</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Location</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Cours de surf</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">L'histoire</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Contact</a>
+                    <a class="nav-link" href="index.php?action=gestionT">Gestion Tarifs</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-md-0">
                 <input class="form-control" type="text" placeholder="Recherche" aria-label="Search">
             </form>
-            <button type="button" class="btn">Connexion</button>
+
+            <a id="deconnexion" href="index.php?action=deconn" class="btn">Deconnexion</a>
+            
+
         </div>
         </div>
     </nav>

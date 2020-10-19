@@ -44,7 +44,7 @@ INSERT INTO CATPROD    VALUES
 
 
 /*Table tarif*/
-CREATE TABLE TARIF
+CREATE TABLE TARIFER
 (
     codeDuree   VARCHAR(5) NOT NULL,
     categoProd   VARCHAR(5) NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE TARIF
     PRIMARY KEY(codeDuree, categoProd)
 );
 
-ALTER TABLE TARIF
+ALTER TABLE TARIFER
     
     ADD CONSTRAINT tarif_FK1 FOREIGN KEY (codeDuree) REFERENCES DUREE (codeDuree),
     ADD CONSTRAINT tarif_FK2 FOREIGN KEY (categoProd) REFERENCES CATPROD (categoProd)
@@ -61,7 +61,7 @@ ALTER TABLE TARIF
     ON DELETE RESTRICT
     ON UPDATE RESTRICT;
 
-INSERT INTO TARIF    VALUES
+INSERT INTO TARIFER    VALUES
     ( '1H'  , 'PS', '10') ,
     ( '1H'  , 'BB', '7') ,
     ( '1H'  , 'CO', '7') ,
@@ -228,9 +228,27 @@ FROM tarif as TA INNER JOIN catprod as CAP
     ORDER BY prixLocation;
 */
 
+--2 requete permettant de recuperer le tableau tarif --
+
 /*
 SELECT libDuree, MAX(IF (TA.categoProd = 'PS', prixLocation, null)) AS 'Planche de Surf', MAX(IF (TA.categoProd = 'BB', prixLocation, null)) AS 'Bodyboard', MAX(IF (TA.categoProd = 'CO', prixLocation, null)) AS 'Combinaison'
 FROM duree AS DU INNER JOIN tarif AS TA
 ON DU.codeDuree = TA.codeDuree
 GROUP BY libDuree ORDER BY 2;
+*/
+
+/*
+SELECT codeDuree, (SELECT prixLocation
+FROM tarifer
+   WHERE tarifer.categoProd = 'PS' AND tarifer.codeDuree = duree.codeDuree) AS 'Planche de Surf', 
+   (SELECT prixLocation
+FROM tarifer
+   WHERE tarifer.categoProd = 'BB' AND tarifer.codeDuree = duree.codeDuree) AS 'Bodyboard',
+   (SELECT prixLocation
+FROM tarifer
+   WHERE tarifer.categoProd = 'CO' AND tarifer.codeDuree = duree.codeDuree) AS 'Combinaison'
+    FROM duree
+    GROUP BY codeDuree;
+
+
 */

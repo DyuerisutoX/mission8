@@ -142,6 +142,58 @@ header nav{
    }
 }
 
+/*Etape B Style ajouter form connexion*/
+#formConnex
+{
+   border-color: #42c1f0;
+   text-align: center;
+}
+
+#msgKO
+{
+   color: red;
+}
+
+#btnConnex
+{
+   margin-right: 25px;
+}
+
+#deconnexion{
+   color: black;
+   font-weight: normal;
+   text-shadow: none;
+   text-transform: none;
+}
+
+#lorem
+{
+   margin-top: -1160px;
+}
+
+#foot_admin
+{
+   position: inherit;
+}
+
+#tarCrud
+{
+   margin-top: -1160px;
+}
+
+.crud
+{
+   margin-bottom: 5px;
+   color: black;
+}
+
+.btnCrud
+{
+   text-align: center;
+}
+
+/*----- END -----*/
+
 /* BOUTIQUE */
 
 .boutique {

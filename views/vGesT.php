@@ -15,62 +15,26 @@
     <!-- HEADER -->
 
         <?php
-            include "inc/accueil/header.php";
+            include "inc/admin/header.php";
         ?>
 
-    <!-- BANNIERES PUB -->
+    <!-- CONTENU -->
 
         <?php
-            include "inc/accueil/pub.php";
+
+            switch ($vue)
+            {
+                case "update":
+                include "inc/gesT/update.php";
+                break;
+
+                default:
+                include "inc/gesT/crud.php";
+                break;
+            }
+            
         ?>
 
-    <!-- Etape B: Zone de connexion -->
-
-        <?php
-            include "inc/accueil/form.php";
-        ?>
-
-    <!-- BOUTIQUE -->
-        
-        <?php
-            include "inc/accueil/boutique.php";
-        ?>
-
-    <!-- COURS DE SURF -->
-
-        <?php
-            include "inc/accueil/coursSurf.php";
-        ?>
-
-    <!-- LOCATION DE MATERIEL -->
-
-        <?php
-            include "inc/accueil/tarifs.php";
-        ?>
-
-    <!-- NOS PARTENAIRES -->
-
-        <?php
-            include "inc/accueil/partenaires.php";
-        ?>
-
-    <!-- HISTOIRE / NOTRE EQUIPE -->
-
-        <?php
-            include "inc/accueil/equipe.php";
-        ?>
-
-    <!-- COORDONNEES -->
-
-        <?php
-            include "inc/accueil/coordonnees.php";
-        ?>
-
-    <!-- FOOTER -->
-
-        <?php
-            include "inc/accueil/footer.php";
-        ?>
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
