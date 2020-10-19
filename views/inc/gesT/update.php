@@ -26,9 +26,9 @@
                     <?php
                         foreach($tabProd as $listeProd)
                         {
-                            $code = $listeProd['categoProd'];
+                            $categoProd = $listeProd['categoProd'];
 
-                            echo "<option value = \"$code\">";
+                            echo "<option value = \"$categoProd\">";
                         }
                     ?>
                 

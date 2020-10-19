@@ -3,6 +3,12 @@
         <div class="bloc location">
             <h2>Tableau des Tarif</h2>
 
+            <div>
+                    <?php
+                        echo $requeteSuccess;
+
+                    ?>
+            </div>
 
             <table class="table">
                 <thead>

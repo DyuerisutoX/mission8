@@ -55,6 +55,10 @@
         case "gestionT":
         include "control/cGesT.php";
         break;
+
+        case "update":
+        include "control/cUpdate.php";
+        break;
     
         default:
         include "control/cAcc.php";
@@ -64,6 +68,7 @@
 
     //Afficher la vue issue du controleur
     include $view;
+
 
 
 
