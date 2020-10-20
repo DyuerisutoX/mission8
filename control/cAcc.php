@@ -4,8 +4,10 @@
     if ($pgAction && $action == "acc")
     {
         require "models/mTarif.php";
+        require "models/mEquipier.php";
 
         $tabTarif = getTarif();
+        $tabEquipe = getEquipe();
         
         //Si on a un $_GET['erreur']
         if($pgErreur)

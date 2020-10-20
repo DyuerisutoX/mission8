@@ -13,54 +13,26 @@
 
         <div id="equipe">
             <h2>Notre équipe</h2>
+                <div class = "row">
+                    <?php
 
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <img src="views/images/gourou.jpg" alt="Gourou" class="rounded-circle img-fluid">
-                    <p class="nom">Gourou</p>
-                    <p class="role">Directeur</p>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <img src="views/images/dantel.jpg" alt="Dantel" class="rounded-circle img-fluid">
-                    <p class="nom">Dantel</p>
-                    <p class="role">Commercial</p>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <img src="views/images/didi.jpg" alt="" class="rounded-circle img-fluid">
-                    <p class="nom">Didi</p>
-                    <p class="role">Commercial</p>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <img src="views/images/patou.jpg" alt="Patou" class="rounded-circle">
-                    <p class="nom">Patou</p>
-                    <p class="role">Moniteur</p>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <img src="views/images/fredo.jpg" alt="Fredo" class="rounded-circle">
-                    <p class="nom">Fredo</p>
-                    <p class="role">Moniteur</p>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <img src="views/images/will.jpg" alt="Will" class="rounded-circle">
-                    <p class="nom">Will</p>
-                    <p class="role">Moniteur</p>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <img src="views/images/kimi.jpg" alt="Kimi" class="rounded-circle">
-                    <p class="nom">Kimi</p>
-                    <p class="role">E-commerce</p>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <img src="views/images/isa.jpg" alt="Isa" class="rounded-circle">
-                    <p class="nom">Isa</p>
-                    <p class="role">E-commerce</p>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-12">
-                    <img src="views/images/fany.jpg" alt="Fany" class="rounded-circle">
-                    <p class="nom">Fany</p>
-                    <p class="role">E-commerce</p>
-                </div>
-            </div>
+                        //Affiche le tableau tarif
+                        foreach($tabEquipe as $equipe)
+                        {
+                            $surnom = $equipe['surnomEq'];
+                            $fonction = $equipe['fonctionEq'];
+
+                            echo "
+                                <div class=\"col-lg-4 col-md-6 col-sm-6\">
+                                    <img src=\"views/images/".strtolower($surnom).".jpg\" alt=\"Gourou\" class=\"rounded-circle img-fluid\">
+                                    <p class=\"nom\">$surnom</p>
+                                    <p class=\"role\">$fonction</p>
+                                </div>";
+                            
+                        }
+                    ?>
+                <div>
+
         </div>
 
         <div class="row">
