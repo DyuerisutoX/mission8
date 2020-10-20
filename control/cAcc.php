@@ -1,14 +1,14 @@
 <?php
 
     //Si notre $_GET['action'] vaut accueil
-    if (isset($action) && $action == "acc")
+    if ($pgAction && $action == "acc")
     {
         require "models/mTarif.php";
 
         $tabTarif = getTarif();
         
         //Si on a un $_GET['erreur']
-        if(isset($erreur))
+        if($pgErreur)
         {
             //Cas où la connexion à échoué
             if ($erreur == 1)

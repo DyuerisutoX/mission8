@@ -1,6 +1,6 @@
 <?php
     //Test si on a une valeur dans action
-    if(isset($action))
+    if($pgAction)
     {
         //Si action vaut trombi
         if ($action == "admin")

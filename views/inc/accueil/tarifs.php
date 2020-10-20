@@ -28,16 +28,16 @@
                     foreach($tabTarif as $tarif)
                     {
                         $duree = $tarif['libDuree'];
-                        $prixPS = $tarif['PS'];
-                        $prixBB = $tarif['BB'];
-                        $prixCO = $tarif['CO'];
+                        $prixPS = ($tarif['PS']) ? $tarif['PS'] ."€" : "- - -";
+                            $prixBB = ($tarif['BB']) ? $tarif['BB'] ."€" : "- - -";
+                            $prixCO = ($tarif['CO']) ? $tarif['CO'] ."€" : "- - -";
 
                         echo "
                         <tr>
                             <td>$duree</td>
-                            <td>$prixPS €</td>
-                            <td>$prixBB €</td>
-                            <td>$prixCO €</td>
+                            <td>$prixPS</td>
+                            <td>$prixBB</td>
+                            <td>$prixCO</td>
                         </tr>
                         ";
                     }

@@ -22,7 +22,7 @@
 
         <?php
 
-            include "inc/gesT/crud.php";
+            include "inc/TCrud/form.php";
 
         ?>
 

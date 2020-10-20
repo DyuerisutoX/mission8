@@ -1,11 +1,12 @@
 <section id="tarCrud">
     <div class="container">
         <div class="bloc location">
-            <h2>Tableau des Tarif</h2>
+            <h2><?php echo $titre ?></h2>
 
             <div>
                     <?php
-                        echo $requeteSuccess;
+                        
+                        //echo $requeteSuccess;
 
                     ?>
             </div>
@@ -27,16 +28,16 @@
                         foreach($tabTarif as $tarif)
                         {
                             $code = $tarif['codeDuree'];
-                            $prixPS = $tarif['PS'];
-                            $prixBB = $tarif['BB'];
-                            $prixCO = $tarif['CO'];
+                            $prixPS = ($tarif['PS']) ? $tarif['PS'] ."€" : "- - -";
+                            $prixBB = ($tarif['BB']) ? $tarif['BB'] ."€" : "- - -";
+                            $prixCO = ($tarif['CO']) ? $tarif['CO'] ."€" : "- - -";
 
                             echo "
                             <tr>
                                 <td>$code</td>
-                                <td>$prixPS €</td>
-                                <td>$prixBB €</td>
-                                <td>$prixCO €</td>
+                                <td>$prixPS</td>
+                                <td>$prixBB</td>
+                                <td>$prixCO</td>
                             </tr>
                             ";
                         }
@@ -45,81 +46,22 @@
                 </tbody>
 
             </table>
-            
+
             <div class="row btnCrud">
+    
                 <div class="produit col-lg-4 col-md-12">
-                    <a href="index.php?action=gestionT&vue=new" class="btn btn-lg crud">Ajouter Tarif</a>
+                    <a href="index.php?action=TCrud&vue=new" class="btn btn-lg crud">Ajouter Tarif</a>
                 </div>
 
                 <div class="produit col-lg-4 col-md-12">
-                    <a href="index.php?action=gestionT&vue=update" class="btn btn-lg crud">Modifier Tarif</a>
+                    <a href="index.php?action=TCrud&vue=update" class="btn btn-lg crud">Modifier Tarif</a>
                 </div>
 
                 <div class="produit col-lg-4 col-md-12">
-                    <a href="index.php?action=gestionT&vue=delete" class="btn btn-lg crud">Supprimer Tarif</a>
+                    <a href="index.php?action=TCrud&vue=delete" class="btn btn-lg crud">Supprimer Tarif</a>
                 </div>
 
-            </div>     
-
+            </div>                 
         </div>
     </div>
 </section>
-<!-- <section id="tarCrud">
-    <div class="container">
-        <div class="bloc">
-            <h2>Tableau des Tarif</h2>
-
-            <table class="tabCrud">
-                <thead>
-                    <tr>
-                        <th>Code Duree</th>
-                        <th>PS</th>
-                        <th>BB</th>
-                        <th>CO</th>
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <?php
-
-                        //Affiche le tableau tarif
-                        // foreach($tabTarif as $tarif)
-                        // {
-                        //     $code = $tarif['codeDuree'];
-                        //     $prixPS = $tarif['PS'];
-                        //     $prixBB = $tarif['BB'];
-                        //     $prixCO = $tarif['CO'];
-
-                        //     echo "
-                        //     <tr>
-                        //         <td>$code</td>
-                        //         <td>$prixPS €</td>
-                        //         <td>$prixBB €</td>
-                        //         <td>$prixCO €</td>
-                        //     </tr>
-                        //     ";
-                        // }
-                    ?>
-
-                </tbody>
-
-            </table>
-            
-            <div class="row">
-                <div class="produit col-lg-4 col-md-12">
-                    <button type="button" class="btn btn-lg crud">Ajouter Tarif</button>
-                </div>
-
-                <div class="produit col-lg-4 col-md-12">
-                    <button type="button" class="btn btn-lg crud">Modifier Tarif</button>
-                </div>
-
-                <div class="produit col-lg-4 col-md-12">
-                    <button type="button" class="btn btn-lg crud">Supprimer Tarif</button>
-                </div>
-
-            </div>     
-
-        </div>
-    </div>
-</section> -->

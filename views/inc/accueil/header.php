@@ -28,7 +28,22 @@
             <form class="form-inline my-2 my-md-0">
                 <input class="form-control" type="text" placeholder="Recherche" aria-label="Search">
             </form>
-            <button id="btnConnex" type="button" class="btn">Connexion</button>
+
+            <?php
+                if ((isset($_SESSION["valEmail"])) && (isset($_SESSION["valPassword"])))
+                {
+            ?>   
+                    <a id="rediAdm" href="index.php?action=admin"class="btn">Admin</a>
+            <?php    
+                }
+                else
+                {  
+            ?> 
+                    <button id="btnConnex" type="button" class="btn">Connexion</button>
+            <?php
+                }
+            ?>
+            
 
             <!-- Ajout code msg erreur -->
             <div>

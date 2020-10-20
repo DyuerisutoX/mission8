@@ -159,6 +159,11 @@ header nav{
    margin-right: 25px;
 }
 
+#rediAdm
+{
+   color: black;
+}
+
 #deconnexion{
    color: black;
    font-weight: normal;
@@ -179,6 +184,21 @@ header nav{
 #tarCrud
 {
    margin-top: -1160px;
+}
+
+#tarCrud img {
+   -webkit-box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.3);
+   box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 992px) {
+   header {
+      background-image: none;
+      height: auto;
+   }
+   #tarCrud {
+      margin-top: 10px;
+   }
 }
 
 .crud
