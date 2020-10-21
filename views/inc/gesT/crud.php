@@ -49,15 +49,19 @@
 
             <div class="row btnCrud">
     
-                <div class="produit col-lg-4 col-md-12">
+                <div class="produit col-lg-3 col-md-12">
                     <a href="index.php?action=TCrud&vue=new" class="btn btn-lg crud">Ajouter Tarif</a>
                 </div>
 
-                <div class="produit col-lg-4 col-md-12">
+                <div class="produit col-lg-3 col-md-12">
+                    <a href="index.php?action=TCrud&vue=read" class="btn btn-lg crud">Lire Tarif</a>
+                </div>
+
+                <div class="produit col-lg-3 col-md-12">
                     <a href="index.php?action=TCrud&vue=update" class="btn btn-lg crud">Modifier Tarif</a>
                 </div>
 
-                <div class="produit col-lg-4 col-md-12">
+                <div class="produit col-lg-3 col-md-12">
                     <a href="index.php?action=TCrud&vue=delete" class="btn btn-lg crud">Supprimer Tarif</a>
                 </div>
 

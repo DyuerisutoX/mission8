@@ -13,7 +13,12 @@
         global $bdd;
         $tabTarif = getTarif();
         $tabProd = getProd();
-        $requeteSuccess = "";
+        $etatRequete = "";
+        $msgErreur ="";
+        $liTarif = "";
+        $cdRecup = "";
+        $ccRecup = "";
+        $prRecup = "";
 
         if($pgVue && $vue == "new")
         {
@@ -21,40 +26,68 @@
             $titre = "Créer un Tarif";
             if(!empty($ppCodeDuree) && !empty($ppCategoProd) && !empty($ppPrix))
             {
+                $test = control($ppCodeDuree,$ppCategoProd);
+                if(empty($test))
+                {
+                    newTarif($ppCodeDuree, $ppCategoProd, $ppPrix);
+                    $etatRequete = "<p class=\"alert alert-success\"> Requete creer effectuer sur " .$ppCodeDuree. " et " .$ppCategoProd. ".</p>";
+                }
+
+                else
+                {
+                    $etatRequete = "<p class=\"alert alert-danger\">Erreur, tarif déjà présent sur " .$ppCodeDuree." et " .$ppCategoProd. ".</p>";
+                }
                 
-                $sql = $bdd -> prepare("INSERT INTO tarifer VALUES(:codeDureeEnv, :codeProdEnv, :prixEnv)");
-                //Variables SQL
-                $sql -> execute(array(
-                    'prixEnv' => $ppPrix,
-                    'codeDureeEnv' => $ppCodeDuree,
-                    'codeProdEnv' => $ppCategoProd
-                ));
-    
-                
-                $requeteSuccess = "<p class=\"alert alert-success\"> Requete creer effectuer sur " .$ppCodeDuree. " et " .$ppCategoProd. ".</p>";
-    
             }
 
         }
 
-        // if(isset($vue) && (($vue == "new") || ($vue == "update") || ($vue == "delete")))
+        else if ($pgVue && $vue == "read")
+        {
+            $titre = "Lire un Tarif";
+            if(!empty($ppCodeDuree) && !empty($ppCategoProd))
+            {
+                $test = control ($ppCodeDuree,$ppCategoProd);
+
+                if (!empty($test))
+                {
+                    $liTarif = readTarif($ppCodeDuree, $ppCategoProd);
+                    $etatRequete = "<p class=\"alert alert-success\"> Requete Lire effectuer sur " .$ppCodeDuree. " et " .$ppCategoProd. ".</p>";
+
+                }
+                
+                else
+                {
+                    $cdRecup = $ppCodeDuree;          $ccRecup = $ppCategoProd;
+                    $etatRequete = "<p class=\"alert alert-danger\"> Valeur inexistante dans le tableau</p>";
+                }
+                
+
+            }
+        }
+
         else if($pgVue && $vue == "update")
         {
             $titre = "Modifier un Tarif";
 
             if(!empty($ppCodeDuree) && !empty($ppCategoProd) && !empty($ppPrix))
             {
-                        
-                $sql = $bdd -> prepare("UPDATE tarifer SET prixLocation = :prixEnv WHERE codeDuree = :codeDureeEnv AND categoProd = :codeProdEnv");
-                //Variables SQL
-                $sql -> execute(array(
-                    'prixEnv' => $ppPrix,
-                    'codeDureeEnv' => $ppCodeDuree,
-                    'codeProdEnv' => $ppCategoProd
-                ));
 
+                $test = control ($ppCodeDuree,$ppCategoProd);
+
+                if(!empty($test))
+                {
+                    updTarif($ppCodeDuree, $ppCategoProd, $ppPrix);
+
+                    $etatRequete = "<p class=\"alert alert-success\"> Requete update effectuer sur " .$ppCodeDuree. " et " .$ppCategoProd. ".</p>";
+                }
+
+                else
+                {
+                    $cdRecup = $ppCodeDuree;          $ccRecup = $ppCategoProd;          $prRecup = $ppPrix;
+                    $etatRequete = "<p class=\"alert alert-danger\"> Erreur dans la saisie du formulaire. Le code duree, code produit ou le prix sont peut-être erronés.</p>";
+                }
                 
-                $requeteSuccess = "<p class=\"alert alert-success\"> Requete update effectuer sur " .$ppCodeDuree. " et " .$ppCategoProd. ".</p>";
 
             }
             
@@ -64,26 +97,22 @@
         else if($pgVue && $vue == "delete")
         {
             $titre = "Supprimer un Tarif";
-            //if(!empty($ppCodeDuree) && !empty($ppCategoProd) && !empty($ppPrix))
+
             if(!empty($ppCodeDuree) && !empty($ppCategoProd))
             {
-                        
-                // $sql = $bdd -> prepare("SELECT * 
-                // FROM tarifer 
-                // WHERE codeDuree = :codeDureeEnv AND categoProd = :codeProdEnv");
+                $test = control ($ppCodeDuree,$ppCategoProd);
 
-                $sql = $bdd -> prepare("DELETE FROM tarifer WHERE codeDuree = :codeDureeEnv AND categoProd = :codeProdEnv");
+                if(!empty($test))
+                {
+                    deleteTarif($ppCodeDuree, $ppCategoProd);
 
-                //Requetes SQL
-                $sql -> execute(array(
-                    'codeDureeEnv' => $ppCodeDuree,
-                    'codeProdEnv' => $ppCategoProd
-                ));
+                    $etatRequete = "<p class=\"alert alert-success\"> Requete delete effectuer sur " .$ppCodeDuree. " et " .$ppCategoProd. ".</p>";
+                }
 
-                //$resultat = $sql -> fetchall(PDO::FETCH_ASSOC);
-
-                $requeteSuccess = "<p class=\"alert alert-success\"> Requete delete effectuer sur " .$ppCodeDuree. " et " .$ppCategoProd. ".</p>";
-                
+                else
+                {
+                    $etatRequete = "<p class=\"alert alert-danger\"> Tarif est déjà inexistant dans le tableau</p>";
+                }
 
             }
         }

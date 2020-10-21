@@ -4,7 +4,7 @@
     {
         global $bdd;
         
-        $sql = $bdd -> prepare("SELECT surnomEq, fonctionEq FROM equipier");
+        $sql = $bdd -> prepare("SELECT * FROM equipier ORDER BY noRole");
 
         $sql -> execute();
         
@@ -13,5 +13,17 @@
         return $listeEqu;
     
     }
+
+    // function getEquipeAPI ()
+    // {
+    //     global $bdd;
+    //     header('Content-Type: application/json');
+    //     $stmt = $bdd -> prepare("SELECT * FROM equipier");
+
+    //     $stmt -> execute();
+
+    //     $result = $stmt -> fetchall(PDO::FETCH_ASSOC);
+    //     return $result;
+    // }
 
 ?>

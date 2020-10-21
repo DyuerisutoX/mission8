@@ -1,5 +1,6 @@
 <?php
 
+    
     function getTarif () : array
     {
         global $bdd;
@@ -19,6 +20,86 @@
     
        return $resultat;
 
+    }
+
+    function control ($codeDuree, $categoProd)
+    {
+        global $bdd;
+        $sql = $bdd -> prepare("SELECT * FROM tarifer WHERE codeDuree = :codeDureeEnv AND categoProd = :codeProdEnv");
+
+        $sql -> execute(array(
+            'codeDureeEnv' => $codeDuree,
+            'codeProdEnv' => $categoProd
+        ));
+
+        $control = $sql -> fetchall(PDO::FETCH_ASSOC);
+        return $control;
+    }
+
+
+    function newTarif ($codeDuree, $categoProd, $prix)
+    {
+        global $bdd;
+
+        $sql = $bdd -> prepare("INSERT INTO tarifer VALUES(:codeDureeEnv, :codeProdEnv, :prixEnv)");
+        //Variables SQL
+        $sql -> execute(array(
+            'prixEnv' => $prix,
+            'codeDureeEnv' => $codeDuree,
+            'codeProdEnv' => $categoProd
+        ));
+
+
+    }
+
+    function readTarif ($codeDuree, $categoProd) : array
+    {
+        global $bdd;
+        $sql = $bdd -> prepare("SELECT TA.codeDuree, categoProd, libDuree, prixLocation 
+        FROM tarifer AS TA INNER JOIN duree AS DU
+        ON TA.codeDuree = DU.codeDuree 
+        WHERE TA.codeDuree = :codeDureeEnv AND categoProd = :codeProdEnv");
+
+        $sql -> execute(array(
+            'codeDureeEnv' => $codeDuree,
+            'codeProdEnv' => $categoProd
+        ));
+
+        $read = $sql -> fetchall(PDO::FETCH_ASSOC);
+        return $read;        
+
+    }
+
+    function updTarif ($codeDuree, $categoProd, $prix)
+    {
+        global $bdd;
+
+        $sql = $bdd -> prepare("UPDATE tarifer SET prixLocation = :prixEnv WHERE codeDuree = :codeDureeEnv AND categoProd = :codeProdEnv");
+        //Variables SQL
+        $sql -> execute(array(
+            'prixEnv' => $prix,
+            'codeDureeEnv' => $codeDuree,
+            'codeProdEnv' => $categoProd
+        ));
+    }
+
+    function deleteTarif ($codeDuree, $categoProd)
+    {
+        global $bdd;
+
+        // $sql = $bdd -> prepare("SELECT * 
+        // FROM tarifer 
+        // WHERE codeDuree = :codeDureeEnv AND categoProd = :codeProdEnv");
+
+        $sql = $bdd -> prepare("DELETE FROM tarifer WHERE codeDuree = :codeDureeEnv AND categoProd = :codeProdEnv");
+
+        //Variables SQL
+        $sql -> execute(array(
+            'codeDureeEnv' => $codeDuree,
+            'codeProdEnv' => $categoProd
+        ));
+
+        //$resultat = $sql -> fetchall(PDO::FETCH_ASSOC);
     }
 
 ?>

@@ -7,12 +7,11 @@
     $pgErreur = (isset($_GET['error'])) ? (isset($_GET['error'])) : null;
     $pgVue = (isset($_GET['vue'])) ? (isset($_GET['vue'])) : null;
 
-    $ppCodeDuree = (isset($_POST['codeDuree'])) ? $_POST['codeDuree'] : null;
-    $ppCategoProd = (isset($_POST['categoProd'])) ? $_POST['categoProd'] : null;
-    $ppPrix = (isset($_POST['prix'])) ? $_POST['prix'] : null;
+    $ppCodeDuree = (isset($_POST['codeDuree'])) ? htmlspecialchars($_POST['codeDuree']) : null;
+    $ppCategoProd = (isset($_POST['categoProd'])) ? htmlspecialchars($_POST['categoProd']) : null;
+    $ppPrix = (isset($_POST['prix'])) ? htmlspecialchars($_POST['prix']) : null;
 
     $pgReq = (isset($_GET['req'])) ? (isset($_GET['req'])) : null;
-    // $pgSucc = (isset($_GET['success'])) ? (isset($_GET['success'])) : null;
 
     $vsEmail = (isset($_SESSION["valEmail"])) ? (isset($_SESSION["valEmail"])) : null;
     $vsPassword = (isset($_SESSION["valPassword"])) ? (isset($_SESSION["valPassword"])) : null;

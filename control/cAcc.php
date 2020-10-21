@@ -8,6 +8,7 @@
 
         $tabTarif = getTarif();
         $tabEquipe = getEquipe();
+        // $json = getEquipeAPI();
         
         //Si on a un $_GET['erreur']
         if($pgErreur)

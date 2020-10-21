@@ -99,19 +99,20 @@ CREATE TABLE EQUIPIER (
     surnomEq    VARCHAR(15) NOT NULL , 
     nomEq       VARCHAR(50) , 
     fonctionEq  VARCHAR(15) NOT NULL , 
+    noRole      INT(1),
     PRIMARY KEY (codeEq)	
 );
 
 INSERT INTO EQUIPIER    VALUES
-    ( 'BOSS'  , 'Gourou' 	, 'MARCON Emmanuel'	, 'Directeur' ) ,
-    ( 'DAN'   , 'Dantel' 	, 'CASTOR Jean'	, 'Commercial' ) , 
-    ( 'DID'   , 'Didi' 	, 'LAMBROUY Didier' , 'Commercial' ) , 
-    ( 'PAT'   , 'Patou' 	, NULL			, 'Moniteur' ) , 
-    ( 'FRED'  , 'Fredo' 	, NULL			, 'Moniteur' ) , 
-    ( 'WIL'   , 'Will' 	, 'SOVÉ Willy'	, 'Moniteur' ) , 
-    ( 'KIM'   , 'Kimi' 	, 'GAGA Géralde'	, 'e-commerce' ) , 
-    ( 'ADJ'   , 'Isa' 	, 'FONFEC Sophie'	, 'e-commerce' ) , 
-    ( 'FAN'   , 'Fany' 	, NULL			, 'e-commerce' );
+    ( 'BOSS'  , 'Gourou' 	, 'MARCON Emmanuel'	, 'Directeur', 1 ) ,
+    ( 'DAN'   , 'Dantel' 	, 'CASTOR Jean'	, 'Commercial' , 2) , 
+    ( 'DID'   , 'Didi' 	, 'LAMBROUY Didier' , 'Commercial' , 2) , 
+    ( 'PAT'   , 'Patou' 	, NULL			, 'Moniteur' , 3) , 
+    ( 'FRED'  , 'Fredo' 	, NULL			, 'Moniteur' , 3) , 
+    ( 'WIL'   , 'Will' 	, 'SOVÉ Willy'	, 'Moniteur' , 3) , 
+    ( 'KIM'   , 'Kimi' 	, 'GAGA Géralde'	, 'e-commerce' , 4) , 
+    ( 'ADJ'   , 'Isa' 	, 'FONFEC Sophie'	, 'e-commerce' , 4) , 
+    ( 'FAN'   , 'Fany' 	, NULL			, 'e-commerce' , 4);
 
 --
 --
@@ -250,5 +251,20 @@ FROM tarifer
     FROM duree
     GROUP BY codeDuree;
 
+
+*/
+
+/*
+SELECT codeEq, QD.idQuest, libQuest, reponse
+FROM qdp AS QD INNER JOIN question AS QU
+ON QD.idQuest = QU.idQuest
+*/
+
+
+/*
+
+SELECT QDcodeEq, surnomEq, nomEq, reponse 
+FROM qdp AS QD INNER JOIN equipier AS EQ 
+ON QD.codeEq = EQ.codeEq
 
 */
