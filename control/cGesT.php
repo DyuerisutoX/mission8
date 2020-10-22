@@ -11,6 +11,8 @@
         $titre = "Tableau des Tarif";
 
         require "models/mTarif.php";
+
+        //Récupère tableau des tarifs
         $tabTarif = getTarif();
 
             

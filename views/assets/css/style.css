@@ -176,8 +176,25 @@ header nav{
    margin-top: -1160px;
 }
 
+#lorem img {
+   -webkit-box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.3);
+   box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width: 992px) {
+   header {
+      background-image: none;
+      height: auto;
+   }
+   #lorem {
+      margin-top: 10px;
+   }
+}
+
 #foot_admin
 {
+   margin-top: 0px;
+   padding-top: 25px;
    position: inherit;
 }
 

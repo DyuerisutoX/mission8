@@ -1,16 +1,29 @@
 <?php
 
-    
+    /**
+     * function getTarif ()
+     * M: Récupère toutes les valeurs de la table 'tarifer' dans la BDD 'Surfwave'
+     * O: Ø
+     * I: @return $resultat
+     */
+
     function getTarif () : array
     {
         global $bdd;
         
         $sql = $bdd -> prepare(
-            "SELECT DU.codeDuree, libDuree, MAX(IF (TA.categoProd = 'PS', prixLocation, null)) AS 'PS', MAX(IF (TA.categoProd = 'BB', prixLocation, null)) AS 'BB', 
-            MAX(IF (TA.categoProd = 'CO', prixLocation, null)) AS 'CO'
-                FROM duree AS DU INNER JOIN tarifer AS TA
-                ON DU.codeDuree = TA.codeDuree
-            GROUP BY DU.codeDuree ORDER BY 3"
+            "SELECT codeDuree, libDuree, (SELECT prixLocation
+            FROM tarifer
+               WHERE tarifer.categoProd = 'PS' AND tarifer.codeDuree = duree.codeDuree) AS 'PS', 
+               (SELECT prixLocation
+            FROM tarifer
+               WHERE tarifer.categoProd = 'BB' AND tarifer.codeDuree = duree.codeDuree) AS 'BB',
+               (SELECT prixLocation
+            FROM tarifer
+               WHERE tarifer.categoProd = 'CO' AND tarifer.codeDuree = duree.codeDuree) AS 'CO'
+                FROM duree
+                GROUP BY codeDuree
+                ORDER BY 3"
         );
 
         $sql -> execute();
@@ -21,6 +34,13 @@
        return $resultat;
 
     }
+
+    /**
+     * function control ()
+     * M: Permet de controler si un tarif existe sur un code durée et une catégorie produit
+     * O: @param{string} $codeDuree, @param{string} $categoProd
+     * I: @return $control
+     */
 
     function control ($codeDuree, $categoProd)
     {
@@ -37,6 +57,13 @@
     }
 
 
+    /**
+     * function newTarif ()
+     * M: Effectue requete SQL permettant d'insérer un tarif dans la table 'tarifer' de la BDD 'Surfwave'
+     * O: @param{string} : $codeDuree, @param{string} : $categoProd, @param{number} : $prix
+     * I: Ø
+     */
+
     function newTarif ($codeDuree, $categoProd, $prix)
     {
         global $bdd;
@@ -51,6 +78,14 @@
 
 
     }
+
+    /**
+     * function raedTarif ()
+     * M: Effectue requete SQL permettant d'e un tarif dans la table 'tarifer' de la BDD 'Surfwave'
+     * O: @param{string} : $codeDuree, @param{string} : $categoProd
+     * I: @return $control
+     */
+
 
     function readTarif ($codeDuree, $categoProd) : array
     {
@@ -70,6 +105,13 @@
 
     }
 
+    /**
+     * function updTarif ()
+     * M: Effectue requete SQL permettant de modifier un tarif dans la table 'tarifer' de la BDD 'Surfwave'
+     * O: @param{string} : $codeDuree, @param{string} : $categoProd, @param{number} : $prix
+     * I: Ø
+     */
+
     function updTarif ($codeDuree, $categoProd, $prix)
     {
         global $bdd;
@@ -83,13 +125,16 @@
         ));
     }
 
+    /**
+     * function deleteTarif ()
+     * M: Effectue requete SQL permettant de supprimer un tarif dans la table 'tarifer' de la BDD 'Surfwave'
+     * O: @param{string} : $codeDuree, @param{string} : $categoProd
+     * I: Ø
+     */
+
     function deleteTarif ($codeDuree, $categoProd)
     {
         global $bdd;
-
-        // $sql = $bdd -> prepare("SELECT * 
-        // FROM tarifer 
-        // WHERE codeDuree = :codeDureeEnv AND categoProd = :codeProdEnv");
 
         $sql = $bdd -> prepare("DELETE FROM tarifer WHERE codeDuree = :codeDureeEnv AND categoProd = :codeProdEnv");
 
@@ -99,7 +144,6 @@
             'codeProdEnv' => $categoProd
         ));
 
-        //$resultat = $sql -> fetchall(PDO::FETCH_ASSOC);
     }
 
 ?>

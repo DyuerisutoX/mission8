@@ -1,5 +1,11 @@
 <?php
 
+    /**
+     * function getEquipe ()
+     * M: Récupère toutes les valeurs de la table 'equipier' dans la BDD 'Surfwave'
+     * O: Ø
+     * I: @return $listeEqu
+     */
     function getEquipe () : array
     {
         global $bdd;
@@ -13,17 +19,5 @@
         return $listeEqu;
     
     }
-
-    // function getEquipeAPI ()
-    // {
-    //     global $bdd;
-    //     header('Content-Type: application/json');
-    //     $stmt = $bdd -> prepare("SELECT * FROM equipier");
-
-    //     $stmt -> execute();
-
-    //     $result = $stmt -> fetchall(PDO::FETCH_ASSOC);
-    //     return $result;
-    // }
 
 ?>

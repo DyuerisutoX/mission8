@@ -1,19 +1,23 @@
 <section id="tarCrud">
     <div class="container">
         <div class="bloc location">
+            <!-- Change le titre selon valeur de vue -->
             <h2><?php echo $titre ?></h2>
 
             <div>
-                    <?php
-                        echo $etatRequete;
-                    ?>
+                <!-- Message concernant l'état de la requête -->
+                <?php
+                    echo $etatRequete;
+                ?>
             </div>
 
+            <!-- Formulaire du CRUD -->
             <form id="formUpd" action="index.php?action=TCrud&vue=<?php echo $vue ?>" method="POST">
                 <label for="codeDuree">Choisissez un code duree: </label>
                 <input list="codeDurees" name="codeDuree" id="codeDuree" value="<?php echo $cdRecup; ?>" required>
                 <datalist id="codeDurees">
                     <?php
+                        //Permet à la liste de selectionner tous les code durées
                         foreach($tabTarif as $tarif)
                         {
                             $code = $tarif['codeDuree'];
@@ -30,6 +34,7 @@
                 <input list="categoProds" name="categoProd" id="categoProd" value="<?php echo $ccRecup; ?>" required>
                 <datalist id="categoProds">
                     <?php
+                        //Permet à la liste de selectionner toutes les categories de produit
                         foreach($tabProd as $listeProd)
                         {
                             $categoProd = $listeProd['categoProd'];
@@ -43,7 +48,7 @@
                 <br><br>
 
                 <?php
-
+                    //Input de type number apparaissant uniquement pour créer ou modifier un tarif
                     if($vue == "update" || $vue == "new")
                     {
                 
@@ -66,6 +71,7 @@
             <br><br>
 
             <?php
+                //Concerne la partie "Lire", permet d'afficher le resultat de la recherche sous forme d'une ligne de tableau
                 if($vue == "read"  && (!empty($ppCodeDuree) && !empty($ppCategoProd) && !empty($test)))
                 {
                     foreach($liTarif as $reTarif)

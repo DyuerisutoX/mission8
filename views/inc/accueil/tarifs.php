@@ -28,9 +28,9 @@
                     foreach($tabTarif as $tarif)
                     {
                         $duree = $tarif['libDuree'];
-                        $prixPS = ($tarif['PS']) ? $tarif['PS'] ."€" : "- - -";
-                            $prixBB = ($tarif['BB']) ? $tarif['BB'] ."€" : "- - -";
-                            $prixCO = ($tarif['CO']) ? $tarif['CO'] ."€" : "- - -";
+                        $prixPS = ($tarif['PS']) ? $tarif['PS'] ."€" : "- - -"; //Si aucune valeur trouver dans la BDD, affiche un string, remplace la valeur vide par "- - -"
+                        $prixBB = ($tarif['BB']) ? $tarif['BB'] ."€" : "- - -";
+                        $prixCO = ($tarif['CO']) ? $tarif['CO'] ."€" : "- - -";
 
                         echo "
                         <tr>

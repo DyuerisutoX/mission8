@@ -4,7 +4,6 @@
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <!--   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">-->
     <title>Surf Wave</title>
     <link rel="stylesheet" href="views/assets/css/bootstrap.css">
     <link rel="stylesheet" href="views/assets/css/style.css">
@@ -13,6 +12,7 @@
     <body>
 
     <!-- HEADER -->
+    <!-- commun à admin -->
 
         <?php
             include "inc/admin/header.php";
@@ -23,6 +23,15 @@
         <?php
 
             include "inc/TCrud/form.php";
+
+        ?>
+
+    <!-- FOOTER -->
+    <!-- Commun à admin-->
+
+        <?php
+
+            include "inc/admin/footer.php";
 
         ?>
 

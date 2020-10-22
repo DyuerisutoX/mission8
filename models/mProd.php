@@ -1,5 +1,12 @@
 <?php
 
+    /**
+     * function getProd ()
+     * M: Récupère toutes les valeurs de la table 'catProd' dans la BDD 'Surfwave'
+     * O: Ø
+     * I: @return $prod
+     */
+
     function getProd () : array
     {
         global $bdd;

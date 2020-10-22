@@ -1,43 +1,34 @@
 <?php
 
     session_start();
+    
+    //Requiert le fichier data
     require "models/data.php";
+
+    //$pg___ : Permet de gérer les paramètres GET pour vérifier si elle contiennent bien des valeurs, si vrai prend comme valeur la fonction isset()
 
     $pgAction = (isset($_GET['action'])) ? (isset($_GET['action'])) : null;
     $pgErreur = (isset($_GET['error'])) ? (isset($_GET['error'])) : null;
     $pgVue = (isset($_GET['vue'])) ? (isset($_GET['vue'])) : null;
+    $pgReq = (isset($_GET['req'])) ? (isset($_GET['req'])) : null;
+
+    //$pp___ : Permet de gérer les paramètres POST pour vérifier si elle contiennent bien des valeurs, si vrai prend comme valeur les $_POST
+
 
     $ppCodeDuree = (isset($_POST['codeDuree'])) ? htmlspecialchars($_POST['codeDuree']) : null;
     $ppCategoProd = (isset($_POST['categoProd'])) ? htmlspecialchars($_POST['categoProd']) : null;
     $ppPrix = (isset($_POST['prix'])) ? htmlspecialchars($_POST['prix']) : null;
 
-    $pgReq = (isset($_GET['req'])) ? (isset($_GET['req'])) : null;
-
     $vsEmail = (isset($_SESSION["valEmail"])) ? (isset($_SESSION["valEmail"])) : null;
     $vsPassword = (isset($_SESSION["valPassword"])) ? (isset($_SESSION["valPassword"])) : null;
 
+    //si $pg___ non null, stocke les valeur de $_GET
     $action = ($pgAction) ? $_GET['action'] : null;
-    $erreur = ($pgErreur) ? $_GET['error'] : null;  //Verifie et stocke la valeur de "erreur"
+    $erreur = ($pgErreur) ? $_GET['error'] : null; 
     $vue = ($pgVue) ? $_GET['vue'] : null;
     $requete = ($pgReq) ? $_GET['req'] : null;
 
-    //$_SESSION['msgReq'] = "";
-    // $success = ($pgSucc) ? $_GET['success'] : null;
-    
-
-    // echo "Valeur de \$action.....(" .$action. ")";
-    // echo "Valeur de \$erreur.....(" .$erreur. ")";
-    // echo "Valeur de \$_SESSION[\"valEmail\"].....(" . $_SESSION["valEmail"]. ")";
-    // echo "Valeur de \$_SESSION[\"valPassword\"].....(" . $_SESSION["valPassword"]. ")";
-
-    // echo "Valeur de \$ppCodeDuree.....(" .$ppCodeDuree. ")<br>";
-    // echo "Valeur de \$ppCategoProd.....(" .$ppCategoProd. ")<br>";
-    // echo "Valeur de \$ppPrix.....(" .$ppPrix. ")<br><br>";
-
-
-   
-
-    //Si $action vaut une de ces valeurs, charger le controlleur adéquate
+    //Si $action vaut une de ces valeurs, inclus le controlleur adéquate
     switch ($action)
     {
         case "acc":

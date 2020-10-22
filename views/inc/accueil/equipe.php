@@ -16,7 +16,7 @@
                     <div class = "row">
                         <?php
 
-                            //Affiche le tableau tarif
+                            //Affiche le tableau des équipes
                             foreach($tabEquipe as $equipe)
                             {
                                 $surnom = $equipe['surnomEq'];
@@ -24,30 +24,18 @@
 
                                 echo "
                                     <div class=\"col-lg-4 col-md-6 col-sm-6\">
-                                        <a href = \"#monModal\" rel = \"modal:open\"><img src=\"views/images/".strtolower($surnom).".jpg\" alt=\"Gourou\" class=\"rounded-circle img-fluid\"></a>
+                                        <img src=\"views/images/".strtolower($surnom).".jpg\" alt=\"Gourou\" class=\"rounded-circle img-fluid\">
                                         <p class=\"nom\">$surnom</p>
                                         <p class=\"role\">$fonction</p>
                                     </div>";
                                 
                             }
 
-                            echo "<br>Valeur afficher avec print_r: <br><br>"; 
-                            print_r($tabEquipe);
-
-                            // echo "<br><br><br>";
-
-                            // echo "Valeur afficher avec json_encode: <br><br>"; 
-                            // echo json_encode($json);
                         ?>
                     </div>
 
             </div>
 
-            <!-- Modal HTML embedded directly into document -->
-            <div id="monModal" class="modal">
-            <p><?php echo json_encode($tabEquipe); ?></p>
-            <a href="#" rel="modal:close">Close</a>
-            </div>
 
 
             <div class="row">

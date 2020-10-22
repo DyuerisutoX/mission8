@@ -2,7 +2,7 @@
     //Test si on a une valeur dans action
     if($pgAction)
     {
-        //Si action vaut trombi
+        //Si action vaut admin
         if ($action == "admin")
         {
 

@@ -13,7 +13,7 @@
     <body>
 
     <!-- HEADER -->
-
+        
         <?php
             include "inc/admin/header.php";
         ?>
@@ -28,7 +28,7 @@
     <!-- Commun -->
 
         <?php
-            // include "inc/admin/footer.php";
+            include "inc/admin/footer.php";
         ?>
 
 

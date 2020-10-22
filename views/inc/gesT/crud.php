@@ -3,14 +3,6 @@
         <div class="bloc location">
             <h2><?php echo $titre ?></h2>
 
-            <div>
-                    <?php
-                        
-                        //echo $requeteSuccess;
-
-                    ?>
-            </div>
-
             <table class="table">
                 <thead>
                     <tr>
@@ -46,7 +38,8 @@
                 </tbody>
 
             </table>
-
+            
+            <!-- Bouton permettant d'acceder au CRUD -->
             <div class="row btnCrud">
     
                 <div class="produit col-lg-3 col-md-12">

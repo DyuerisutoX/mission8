@@ -19,8 +19,8 @@
     {
         // Affiche le message d'erreur
         die("Echec de la connexion à la BDD: ......(" .$e->getMessage(). ")");
-    }
-    
+
+    }    
 
 
 ?>

@@ -30,6 +30,7 @@
             </form>
 
             <?php
+                //Bouton admin pour se diriger sur la vue vAdmin si on a une session connecté
                 if ((isset($_SESSION["valEmail"])) && (isset($_SESSION["valPassword"])))
                 {
             ?>   
@@ -37,7 +38,7 @@
             <?php    
                 }
                 else
-                {  
+                {  //Bouton connexion si on a une session déconnecté
             ?> 
                     <button id="btnConnex" type="button" class="btn">Connexion</button>
             <?php
